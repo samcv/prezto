@@ -30,13 +30,28 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'directory' \
   'spectrum' \
+  'git' \
   'utility' \
   'completion' \
-  'prompt'
+  'syntax-highlighting' \
+  'prompt' \
+  'history-substring-search'
 
 #
 # Autosuggestions
 #
+local function cmd-in-path () {
+    command -v $1 > /dev/null 2>&1
+}
+if cmd-in-path _task ; then
+    zstyle ':completion:*:*:task:*' verbose yes
+    zstyle ':completion:*:*:task:*:descriptions' format '%U%B%d%b%u'
+
+    zstyle ':completion:*:*:task:*' group-name ''
+
+    alias t=task
+    compdef _task t=task
+fi
 
 # Set the query found color.
 # zstyle ':prezto:module:autosuggestions:color' found ''
@@ -46,13 +61,13 @@ zstyle ':prezto:load' pmodule \
 #
 
 # Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':prezto:module:editor' key-bindings 'emacs'
+zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Auto convert .... to ../..
 # zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Allow the zsh prompt context to be shown.
-#zstyle ':prezto:module:editor' ps-context 'yes'
+zstyle ':prezto:module:editor' ps-context 'yes'
 
 #
 # Git
@@ -133,34 +148,35 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 
 #
 # Syntax Highlighting
-#
-
+##
+zstyle ':prezto:module:syntax-highlighting' color 'yes'
 # Set syntax highlighters.
 # By default, only the main highlighter is enabled.
-# zstyle ':prezto:module:syntax-highlighting' highlighters \
-#   'main' \
-#   'brackets' \
-#   'pattern' \
-#   'line' \
-#   'cursor' \
-#   'root'
+zstyle ':prezto:module:syntax-highlighting' highlighters \
+     'main' \
+    'brackets' \
+    'pattern' \
+    'line' \
+    'cursor' \
+    'root'
 #
 # Set syntax highlighting styles.
-# zstyle ':prezto:module:syntax-highlighting' styles \
-#   'builtin' 'bg=blue' \
-#   'command' 'bg=blue' \
-#   'function' 'bg=blue'
+#zstyle ':prezto:module:syntax-highlighting' styles \
+#  'command' 'bg=blue'
+#'builtin' 'bg=blue' \
+ # 'function' 'bg=blucate'
 #
 # Set syntax pattern styles.
-# zstyle ':prezto:module:syntax-highlighting' pattern \
-#   'rm*-rf*' 'fg=white,bold,bg=red'
+zstyle ':prezto:module:syntax-highlighting' pattern \
+   'rm*-rf*' 'fg=white,bold,bg=red' \
+   'sudo' 'bold,bg=green'
 
 #
 # Terminal
 #
 
 # Auto set the tab and window titles.
-# zstyle ':prezto:module:terminal' auto-title 'yes'
+zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # Set the window title format.
 # zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
@@ -169,7 +185,7 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 # zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 
 # Set the terminal multiplexer title format.
-# zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
+zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
 
 #
 # Tmux
@@ -186,3 +202,6 @@ zstyle ':prezto:module:prompt' theme 'sorin'
 
 # Set the default session name:
 # zstyle ':prezto:module:tmux:session' name 'YOUR DEFAULT SESSION NAME'
+
+# Don't warn before overwriting things with a pipe
+setopt clobber

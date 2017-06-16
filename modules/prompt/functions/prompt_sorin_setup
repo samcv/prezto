@@ -68,8 +68,9 @@ function prompt_sorin_precmd {
   # Format PWD.
   _prompt_sorin_pwd=$(promptpwd)
 
-  # Define prompts.
-  RPROMPT='${editor_info[overwrite]}%(?:: %F{1}⏎%f)${VIM:+" %B%F{6}V%f%b"}'
+  # Define prompts.✘
+  #RPROMPT='${editor_info[overwrite]}%(?:: %F{15}⏎%f)${VIM:+" %B%F{6}V%f%b"}'
+  RPROMPT='${editor_info[overwrite]}%(?:: %F{1}✘ $?%f)${VIM:+" %B%F{6}V%f%b"}'
 
   # Kill the old process of slow commands if it is still running.
   if (( _prompt_sorin_precmd_async_pid > 0 )); then
