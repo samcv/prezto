@@ -35,11 +35,10 @@ zstyle ':prezto:load' pmodule \
   'completion' \
   'syntax-highlighting' \
   'prompt' \
-  'history-substring-search'
+  'history-substring-search' \
+  'autosuggestions'
 
-#
-# Autosuggestions
-#
+
 local function cmd-in-path () {
     command -v $1 > /dev/null 2>&1
 }
@@ -53,8 +52,12 @@ if cmd-in-path _task ; then
     compdef _task t=task
 fi
 
+#
+# Autosuggestions
+#
+
 # Set the query found color.
-# zstyle ':prezto:module:autosuggestions:color' found ''
+#zxstyle ':prezto:module:autosuggestions:color' found ''
 
 #
 # Editor
@@ -188,6 +191,7 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
 
 #
+
 # Tmux
 #
 
