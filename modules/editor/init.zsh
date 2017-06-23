@@ -326,6 +326,8 @@ done
 if zstyle -t ':prezto:module:editor' dot-expansion; then
   bindkey -M isearch . self-insert 2> /dev/null
 fi
+# Delete character in vim in cmd mode instead of weird default functionality
+bindkey -M vicmd "$key_info[Delete]" delete-char
 
 #
 # Layout
