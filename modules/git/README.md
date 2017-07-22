@@ -65,7 +65,7 @@ Aliases are enabled by default. You can disable them with:
   - `gcam` stages all modified and deleted files, and records changes to the repository with the given message.
   - `gco` checks out a branch or paths to work tree.
   - `gcO` checks out hunks from the index or the tree interactively.
-  - `gcf` amends the tip of the current branch using the same log message as *HEAD*. 
+  - `gcf` amends the tip of the current branch using the same log message as *HEAD*.
   - `gcSf` amends the tip of the current branch using the same log message as *HEAD*. (Signed)
   - `gcF` amends the tip of the current branch.
   - `gcSF` amends the tip of the current branch. (Signed)
@@ -102,6 +102,7 @@ Aliases are enabled by default. You can disable them with:
   - `gf` downloads objects and references from another repository.
   - `gfa` downloads objects and references from all remote repositories.
   - `gfc` clones a repository into a new directory.
+  - `gfcr` clones a repository into a new directory including all submodules.
   - `gfm` fetches from and merges with another repository or local branch.
   - `gfr` fetches from and rebases on another repository or local branch.
 
@@ -317,7 +318,7 @@ Functions
   - `git-commit-lost` lists lost commits.
   - `git-dir` displays the path to the Git directory.
   - `git-hub-browse` opens the [GitHub][3] repository in the default browser.
-  - `git-hub-shorten-url` shortens GitHub URLs.
+  - `git-hub-shorten-url` shortens [GitHub URLs][10].
   - `git-info` exposes repository information via the `$git_info` associative
     array.
   - `git-root` displays the path to the working tree root.
@@ -388,6 +389,8 @@ The following contexts must be enabled with the following zstyle:
 | rebase               |    value    | Rebasing
 | rebase-interactive   |    value    | Rebasing interactively
 | rebase-merge         |    value    | Rebasing merge
+| revert               |    value    | Reverting
+| revert-sequence      |    value    | Reverting sequence
 
 First, format the repository state attributes. For example, to format the branch
 and remote names, define the following styles.
@@ -422,3 +425,4 @@ Authors
 [7]: https://github.com/sorin-ionescu/prezto/issues/219
 [8]: http://www.kernel.org/pub/software/scm/git/docs/git-log.html
 [9]: https://getgb.io/
+[10]: https://github.com/blog/985-git-io-github-url-shortener
