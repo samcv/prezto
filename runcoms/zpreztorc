@@ -51,6 +51,8 @@ if cmd-in-path _task ; then
     alias t=task
     compdef _task t=task
 fi
+# Ctrl + a moves to start of line
+bindkey -M viins "$key_info[Control]a" vi-first-non-blank
 
 #
 # Autosuggestions
